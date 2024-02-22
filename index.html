@@ -7,7 +7,11 @@
     <script type="text/jsx">
       const app = document.getElementById('app');
       const root = ReactDOM.createRoot(app);
-      root.render(<h1>Develop. Preview. Ship.</h1>);
+
+      function Header(){
+        return(<h1>UI element in a component</h1>);
+      }
+      root.render(<Header />);
     </script>
   </body>
 </html>
