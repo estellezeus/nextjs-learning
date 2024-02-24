@@ -1,17 +1,48 @@
 <html>
   <body>
     <div id="app"></div>
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- react librairies are of version 18-->
+    <script src="lib/react.development.js"></script>
+    <script src="lib/react-dom.development.js"></script>
+    <script src="lib/babel.min.js"></script>
     <script type="text/jsx">
       const app = document.getElementById('app');
       const root = ReactDOM.createRoot(app);
 
-      function Header(){
-        return(<h1>UI element in a component</h1>);
+      function HomePage(){
+        const names = ["Estelle", "Zeukeng", "Nguion"];
+        const [likes, setLikes] = React.useState(0);
+
+        function handleClick(){
+          setLikes(likes + 1);
+        }
+        return (
+          <div>
+            <Header title="My first Prop" />
+            <ul>
+              {
+                names.map((name) => (
+                  <li key = {name} > {name}</li>
+                ))
+              }
+            </ul>
+            <button onClick={handleClick}>
+              Like ({likes})
+            </button>
+          </div>
+        )
       }
-      root.render(<Header />);
+
+      function Header({title}){
+        return(
+          <h1>
+            UI element in a component
+            <h2>{title}</h2>
+          </h1>
+        
+        );
+      }
+      root.render(<HomePage />);
     </script>
   </body>
 </html>
